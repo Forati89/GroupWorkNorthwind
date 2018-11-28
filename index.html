@@ -21,11 +21,11 @@
         <div class="row">
         <div id="leftPanel0" class="col-lg-6">
             <h3>Customers</h3>
-            <input type="text" class="form-check-input">
+            <input id="cSearch" oninput="search('#cSearch','#cThead', '#cBody', '/questions/')" type="text" class="form-check-input">
         </div>
         <div id="rightPanel0" class="col-lg-6">
             <h3>Products</h3>
-            <input type="text" class="form-check-input">
+            <input id="pSearch" type="text" oninput="search('#pSearch','#pThead', '#pBody', '/products/')"class="form-check-input">
         </div>
     </div>
     <div class="row">
@@ -33,35 +33,9 @@
             <div class="headerPanel">
 
                 <div class="classTable">
-                    <table class="tableProducts">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
+                    <table class="tableCustomers">
+                        <thead id="cThead"></thead>
+                        <tbody id="cBody"></tbody>
                     </table>
                 </div>
             </div>
@@ -70,35 +44,9 @@
             <div class="headerPanel">
 
                 <div class="classTable">
-                    <table class="tableCustomers">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
+                    <table class="tableProducts">
+                        <thead id="pThead"></thead>
+                        <tbody id="pBody"></tbody>
                     </table>
                 </div>
             </div>
