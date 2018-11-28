@@ -55,7 +55,7 @@ function saveCustomer()
              var phone=document.querySelector("#phone").value
              var fax=document.querySelector("#fax").value
              
-             var obj={customerid: customerid, companyname: companyname,contactname: contactname,contactitle: contactitle,address: address,region: region,city: city,postalcode: postalcode,country: country,phone: phone,fax: fax}
+             var obj={customerid:customerid,companyname:companyname,contactname:contactname,contactitle:contactitle,address:address,region:region,city:city,postalcode:postalcode,country:country,phone:phone,fax:fax}
             //  console.log(customerid)
              console.log(obj)
              $.post("/newCustomer",obj,function(response){
