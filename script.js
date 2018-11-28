@@ -46,7 +46,7 @@ function saveCustomer()
              var customerid=document.querySelector("#customerid").value
              var companyname=document.querySelector("#companyname").value
              var contactname=document.querySelector("#contactname").value
-             var contactitle=document.querySelector("#contactitle").value
+             var contacttitle=document.querySelector("#contacttitle").value
              var address=document.querySelector("#address").value
              var region=document.querySelector("#region").value
              var city=document.querySelector("#city").value
@@ -55,7 +55,7 @@ function saveCustomer()
              var phone=document.querySelector("#phone").value
              var fax=document.querySelector("#fax").value
              
-             var obj={customerid:customerid,companyname:companyname,contactname:contactname,contactitle:contactitle,address:address,region:region,city:city,postalcode:postalcode,country:country,phone:phone,fax:fax}
+             var obj={customerid:customerid,companyname:companyname,contactname:contactname,contacttitle:contacttitle,address:address,region:region,city:city,postalcode:postalcode,country:country,phone:phone,fax:fax}
             //  console.log(customerid)
              console.log(obj)
              $.post("/newCustomer",obj,function(response){
