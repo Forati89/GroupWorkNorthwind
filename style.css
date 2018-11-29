@@ -4,6 +4,12 @@ html, body {
     height: 100%;
     
 }
+.tableCustomer{
+    text-align: center;
+}
+#cBody, #cThead{
+text-align: center;
+}
 #regholder{
 text-align: center;
 width: 100%;
@@ -89,11 +95,17 @@ display: inline-block;
     margin: 0;
     padding-bottom: 2%;
 }
-.headerPanel{
-    text-align: left;
+.headerPanel2, .headerPanel{
+    height: 100%;
+    text-align: center;
     padding-left: 2%;
     vertical-align: middle;
+    max-width: 940px;
+    font-size: 80%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
+
 .headerNavbar{
     text-align: center;
     vertical-align: middle;
@@ -114,6 +126,10 @@ height: 100%;
 }
 
 @media (max-width: 768px) {
+    .headerPanel2{
+        max-width: 400px;
+        overflow-y: auto;
+    }
     .headerPanel{
         padding-left: 5%;
     }
