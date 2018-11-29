@@ -48,6 +48,32 @@ app.get("/products/:id", function (req, res) {
         res.json(rows)
     })
 })
+app.post('/newCustomer', function (req, res) {
+    var body = req.body
+    console.log(body)
+    var customerid = req.body.customerid
+    var companyname = req.body.companyname
+    var contactname = req.body.contactname
+    var contacttitle = req.body.contacttitle
+    var address = req.body.address
+    var region = req.body.region
+    var city = req.body.city
+    var postalcode = req.body.postalcode
+    var country = req.body.country
+    var phone = req.body.phone
+    var fax = req.body.fax
+    insertCustomer(customerid,companyname,contactname,contacttitle,address,region,city,postalcode,country,phone,fax)
+    
+})
+function insertCustomer(customerid,companyname,contactname,contacttitle,address,region,city,postalcode,country,phone,fax)
+{
+    var myQuery = `insert into customers(customerid,companyname,contactname,contacttitle,address,region,city,postalcode,country,phone,fax)values
+
+    ('${customerid}','${companyname}','${contactname}','${contacttitle}','${address}','${region}','${city}','${postalcode}','${country}','${phone}','${fax}')`
+    sql.query(connString, myQuery, (err, rows) => {
+        if(err) console.log(err)
+    })
+}
 
 app.listen(8000)
 console.log("8000")

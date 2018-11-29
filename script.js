@@ -2,8 +2,8 @@ function search(searchField, insertTH, insertTB, query){
 
     function send()
     {
-     var customerID=document.querySelector(searchField).value
-      var url=query+customerID
+     var cid=document.querySelector(searchField).value
+      var url=query+cid
      console.log(url)
      
       fetch(url)
@@ -41,6 +41,26 @@ function search(searchField, insertTH, insertTB, query){
 
   send();
 }
+function saveCustomer()
+         {
+             var customerid=document.querySelector("#customerid").value
+             var companyname=document.querySelector("#companyname").value
+             var contactname=document.querySelector("#contactname").value
+             var contacttitle=document.querySelector("#contacttitle").value
+             var address=document.querySelector("#address").value
+             var region=document.querySelector("#region").value
+             var city=document.querySelector("#city").value
+             var postalcode=document.querySelector("#postalcode").value
+             var country=document.querySelector("#country").value
+             var phone=document.querySelector("#phone").value
+             var fax=document.querySelector("#fax").value
+             
+             var obj={customerid:customerid,companyname:companyname,contactname:contactname,contacttitle:contacttitle,address:address,region:region,city:city,postalcode:postalcode,country:country,phone:phone,fax:fax}
+            //  console.log(customerid)
+             console.log(obj)
+             $.post("/newCustomer",obj,function(response){
+             })
+            };
 
   
     
