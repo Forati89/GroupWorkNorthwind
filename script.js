@@ -41,6 +41,19 @@ function search(searchField, insertTH, insertTB, query){
 
   send();
 }
+function clearBoxesC(){
+    document.getElementById("customerid").value = '';
+    document.getElementById("companyname").value = '';
+    document.getElementById("contactname").value = '';
+    document.getElementById("contacttitle").value = '';
+    document.getElementById("address").value = '';
+    document.getElementById("region").value = '';
+    document.getElementById("city").value = '';
+    document.getElementById("postalcode").value = '';
+    document.getElementById("country").value = '';
+    document.getElementById("phone").value = '';
+    document.getElementById("fax").value = '';
+}
 function saveCustomer()
          {
              var customerid=document.querySelector("#customerid").value
@@ -59,7 +72,8 @@ function saveCustomer()
             //  console.log(customerid)
              console.log(obj)
              $.post("/newCustomer",obj,function(response){
-             })
+             });
+             alert("Customer Registertion Success");
             };
 
   
