@@ -108,16 +108,34 @@ app.post('/neworder', function (req, res) {
     var RequiredDate = req.body.RequiredDate
     var ShipperID = req.body.ShipperID
     var Orderid = req.body.Orderid
-    var ProductID = req.body.ProductID
-    var Quantity = req.body.Quantity
-    insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid,ProductID,Quantity)
+    insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid)
 
 })
-function insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid,ProductID,Quantity)
+function insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid)
 {  
-    var myQuery2 = `insert into orders(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipVia,Orderid))values; insert into Order Details(ProductID,Quantity)values
+    var myQuery2 = `insert into orders(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipVia,Orderid))value
 
-    ('${customerid}','${ShipAddress}','${shipcity}','${ShipPostalCode}','${OrderDate}','${RequiredDate}','${ShipperID}','${Orderid}','${ProductID}','${Quantity}')`
+    ('${customerid}','${ShipAddress}','${shipcity}','${ShipPostalCode}','${OrderDate}','${RequiredDate}','${ShipperID}','${Orderid}')`
+    sql.query(connString, myQuery2, (err, rows) => {
+        if(err) console.log(err)
+
+    })
+
+}
+app.post('/neworderdetail', function (req, res) {
+    var body = req.body
+    var Orderid = req.body.Orderid
+    var ProductID = req.body.ProductID
+    var Quantity = req.body.Quantity
+    var UnitePrice = req.body.UnitePrice
+    insertorder(Orderid,ProductID,Quantity,UnitePrice)
+
+})
+function insertorder(Orderid,ProductID,Quantity,UnitePrice)
+{  
+    var myQuery2 = `insert into [order details](Orderid,ProductID,Quantity,UnitePrice)values
+
+    ('${Orderid}','${ProductID}','${Quantity}','${UnitePrice}')`
     sql.query(connString, myQuery2, (err, rows) => {
         if(err) console.log(err)
 

@@ -122,8 +122,9 @@ function newOrderDetails(){
   var Quantity=document.querySelector("#Quantity").value
   var UnitePrice=document.querySelector("#UnitePrice").value
 
+  console.log(obj)
   var obj={Orderid:Orderid,ProductID:ProductID,Quantity:Quantity,UnitePrice: UnitePrice}
-  $.post("/neworder",obj,function(response){
+  $.post("/neworderdetail",obj,function(response){
   })    
 };
 
