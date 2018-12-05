@@ -23,9 +23,9 @@ const connString = "server=.;Database=northwind;Trusted_Connection=Yes;Driver={S
 
 app.get("/Customers", function (req, res) {
 
-    var id = req.params.id
+    // var id = req.params.id
 
-    var sqlQuery = "Select * from Customers"
+    var sqlQuery = "select * from customers"
     sql.query(connString, sqlQuery, (err, rows) => {
         if (err) {
             console.log('fel', err)
@@ -35,9 +35,9 @@ app.get("/Customers", function (req, res) {
 })
 app.get("/Products", function (req, res) {
 
-    var id = req.params.id
+    // var id = req.params.id
 
-    var sqlQuery = "Select * from Products"
+    var sqlQuery = "select * from products"
     sql.query(connString, sqlQuery, (err, rows) => {
         if (err) {
             console.log('fel', err)
@@ -100,25 +100,36 @@ function insertCustomer(customerid,companyname,contactname,contacttitle,address,
 }
 app.post('/neworder', function (req, res) {
     var body = req.body
+    console.log(body);
+    myRes = res
     var customerid = req.body.customerid
-    var ShipAddress = req.body.ShipAddress
+    var shipaddress = req.body.ShipAddress
     var shipcity = req.body.shipcity
-    var ShipPostalCode = req.body.ShipPostalCode
-    var OrderDate = req.body.OrderDate
-    var RequiredDate = req.body.RequiredDate
-    var ShipperID = req.body.ShipperID
-    var Orderid = req.body.Orderid
-    insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid)
+    var shippostalcode = req.body.ShipPostalCode
+    var orderdate = req.body.OrderDate
+    var requireddate = req.body.RequiredDate
+    var shipvia = req.body.ShipVia
+    // console.log(customerid,shipaddress,shipcity,shippostalcode,orderdate,requireddate,shipvia)
+
+    insertOrder(customerid,shipaddress,shipcity,shippostalcode,orderdate,requireddate,shipvia)
 
 })
-function insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid)
+
+function insertOrder(customerid,shipaddress,shipcity,shippostalcode,orderdate,requireddate,shipvia)
 {  
-    var myQuery2 = `insert into orders(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipVia,Orderid))value
-
-    ('${customerid}','${ShipAddress}','${shipcity}','${ShipPostalCode}','${OrderDate}','${RequiredDate}','${ShipperID}','${Orderid}')`
-    sql.query(connString, myQuery2, (err, rows) => {
+    var myQuery = `insert into orders(customerid,shipaddress,shipcity,shippostalcode,orderdate,requireddate,shipvia)values
+    
+    ('${customerid}','${shipaddress}','${shipcity}','${shippostalcode}','${orderdate}','${requireddate}','${shipvia}')`
+    
+    sql.query(connString, myQuery, (err, rows) => {
         if(err) console.log(err)
-
+        myQuery = `select max(orderid) from orders`
+        sql.query(connString, myQuery, (err, rows) => {
+            if(err) console.log(err)
+            console.log(rows)
+            var orderid2 = rows[0].Column0
+            myRes.json(orderid2)
+        })
     })
 
 }
@@ -128,10 +139,10 @@ app.post('/neworderdetail', function (req, res) {
     var ProductID = req.body.ProductID
     var Quantity = req.body.Quantity
     var UnitePrice = req.body.UnitePrice
-    insertorder(Orderid,ProductID,Quantity,UnitePrice)
+    insertOrderDetails(Orderid,ProductID,Quantity,UnitePrice)
 
 })
-function insertorder(Orderid,ProductID,Quantity,UnitePrice)
+function insertOrderDetails(Orderid,ProductID,Quantity,UnitePrice)
 {  
     var myQuery2 = `insert into [order details](Orderid,ProductID,Quantity,UnitePrice)values
 

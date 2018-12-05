@@ -1,23 +1,23 @@
 
-$(document).ready(function() {
-  $.get("/Customers",function(response){
+// $(document).ready(function() {
+//   $.get("/Customers",function(response){
 
-    select = document.getElementById('custom');
+//     select = document.getElementById('custom');
 
-      for(var i = 0; i<response.length; i++){
-        select.add(new Option(response[i].CustomerID) );
-      }
-  })
+//       for(var i = 0; i<response.length; i++){
+//         select.add(new Option(response[i].CustomerID) );
+//       }
+//   })
 
-  $.get("/Products",function(response){
+//   $.get("/Products",function(response){
 
-    select = document.getElementById('ProductID');
+//     select = document.getElementById('ProductID');
 
-      for(var i = 0; i<response.length; i++){
-        select.add(new Option(response[i].ProductName) );
-      }
-  })
-});
+//       for(var i = 0; i<response.length; i++){
+//         select.add(new Option(response[i].ProductName) );
+//       }
+//   })
+// });
 function search(searchField, insertTH, insertTB, query){
 
     function send()
@@ -92,22 +92,25 @@ function newOrder(){
   var OrderDate=document.querySelector("#OrderDate").value
   var RequiredDate=document.querySelector("#RequiredDate").value
   var ShipVia=document.querySelector("#ShipVia").value
-  var Orderid=document.querySelector("#Orderid").value
-  var obj={customerid:customerid,ShipAddress:ShipAddress,shipcity:shipcity,ShipPostalCode:ShipPostalCode,OrderDate:OrderDate,RequiredDate:RequiredDate,ShipVia:ShipVia,Orderid:Orderid}
-  //  console.log(customerid)
+  // var Orderid=document.querySelector("#Orderid").value
+  var obj={customerid:customerid,ShipAddress:ShipAddress,shipcity:shipcity,ShipPostalCode:ShipPostalCode,OrderDate:OrderDate,RequiredDate:RequiredDate,ShipVia:ShipVia}
+
   console.log(obj)
   $.post("/neworder",obj,function(response){
-  })    
+    document.querySelector("#Orderid").value = response
+  }) 
 };
+
 function newOrderDetails(){
-  var Orderid=document.querySelector("#Orderid").value
+  var Orderid2=document.querySelector("#Orderid").value
   var ProductID=document.querySelector("#ProductID").value
   var Quantity=document.querySelector("#Quantity").value
   var UnitePrice=document.querySelector("#UnitePrice").value
 
-  console.log(obj)
-  var obj={Orderid:Orderid,ProductID:ProductID,Quantity:Quantity,UnitePrice: UnitePrice}
-  $.post("/neworderdetail",obj,function(response){
+  var obj2={Orderid2:Orderid2,ProductID:ProductID,Quantity:Quantity,UnitePrice: UnitePrice}
+
+  console.log(obj2)
+  $.post("/neworderdetail",obj2,function(response){
   })    
 };
 
