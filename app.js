@@ -21,7 +21,30 @@ const sql = require('msnodesqlv8');
 //Connection sträng som vanligt
 const connString = "server=.;Database=northwind;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 
+app.get("/Customers", function (req, res) {
 
+    var id = req.params.id
+
+    var sqlQuery = "Select * from Customers"
+    sql.query(connString, sqlQuery, (err, rows) => {
+        if (err) {
+            console.log('fel', err)
+        }
+        res.json(rows)
+    })
+})
+app.get("/Products", function (req, res) {
+
+    var id = req.params.id
+
+    var sqlQuery = "Select * from Products"
+    sql.query(connString, sqlQuery, (err, rows) => {
+        if (err) {
+            console.log('fel', err)
+        }
+        res.json(rows)
+    })
+})
 app.get("/questions/:id", function (req, res) {
     var id = req.params.id
     console.log(id)
@@ -48,6 +71,7 @@ app.get("/products/:id", function (req, res) {
         res.json(rows)
     })
 })
+
 app.post('/newCustomer', function (req, res) {
     var body = req.body
     console.log(body)
@@ -74,7 +98,32 @@ function insertCustomer(customerid,companyname,contactname,contacttitle,address,
         if(err) console.log(err)
     })
 }
+app.post('/neworder', function (req, res) {
+    var body = req.body
+    var customerid = req.body.customerid
+    var ShipAddress = req.body.ShipAddress
+    var shipcity = req.body.shipcity
+    var ShipPostalCode = req.body.ShipPostalCode
+    var OrderDate = req.body.OrderDate
+    var RequiredDate = req.body.RequiredDate
+    var ShipperID = req.body.ShipperID
+    var Orderid = req.body.Orderid
+    var ProductID = req.body.ProductID
+    var Quantity = req.body.Quantity
+    insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid,ProductID,Quantity)
+
+})
+function insertorder(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipperID,Orderid,ProductID,Quantity)
+{  
+    var myQuery2 = `insert into orders(customerid,ShipAddress,shipcity,ShipPostalCode,OrderDate,RequiredDate,ShipVia,Orderid))values; insert into Order Details(ProductID,Quantity)values
+
+    ('${customerid}','${ShipAddress}','${shipcity}','${ShipPostalCode}','${OrderDate}','${RequiredDate}','${ShipperID}','${Orderid}','${ProductID}','${Quantity}')`
+    sql.query(connString, myQuery2, (err, rows) => {
+        if(err) console.log(err)
+
+    })
+
+}
 
 app.listen(8000)
 console.log("8000")
-
