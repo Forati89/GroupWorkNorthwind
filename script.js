@@ -105,12 +105,13 @@ function newOrderDetails(){
   var Orderid2=document.querySelector("#Orderid").value
   var ProductID=document.querySelector("#ProductID").value
   var Quantity=document.querySelector("#Quantity").value
-  var UnitePrice=document.querySelector("#UnitePrice").value
+  var UnitePrice=document.querySelector("#UnitPrice").value
 
   var obj2={Orderid2:Orderid2,ProductID:ProductID,Quantity:Quantity,UnitePrice: UnitePrice}
 
   console.log(obj2)
   $.post("/neworderdetail",obj2,function(response){
+    
   })    
 };
 
