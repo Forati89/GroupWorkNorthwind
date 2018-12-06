@@ -4,6 +4,12 @@ html, body {
     height: 100%;
     
 }
+#cart{
+    margin-top: 2%;
+    background: white;
+    background-size: 20%;
+    padding-bottom: 2%;
+}
 .tableCustomer{
     text-align: center;
 }

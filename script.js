@@ -61,7 +61,12 @@ function search(searchField, insertTH, insertTB, query){
 
   send();
 }
-<<<<<<< HEAD
+function fillCart(){
+  document.getElementById("cartProduct").innerHTML = document.querySelector("#ProductID").value;
+  document.getElementById("cartPPrice").innerHTML = document.querySelector("#Quantity").value;
+  document.getElementById("cartPCount").innerHTML = document.querySelector("#UnitPrice").value + ' kr';
+  document.getElementById("cartPTotal").innerHTML = document.querySelector("#UnitPrice").value * document.querySelector("#Quantity").value + ' kr';
+}
 function clearBoxesC(){
     document.getElementById("customerid").value = '';
     document.getElementById("companyname").value = '';
@@ -75,10 +80,6 @@ function clearBoxesC(){
     document.getElementById("phone").value = '';
     document.getElementById("fax").value = '';
 }
-=======
-
-
->>>>>>> b89ab8999109f03e09076dc1c69db70d14d086a3
 function saveCustomer()
          {
              var customerid=document.querySelector("#customerid").value
