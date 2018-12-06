@@ -85,7 +85,16 @@
             </div>
         </div>
         <div id="rightPanel2" class="col-lg-6">
+                <div class="headerPanel"> 
+                    
+                        <h5 class="RegOrder" for="ProductID">Products:</h5><input class="RegOrder" id="ProductID"></input>
+                        <h5 class="RegOrder">Quantity:</h5> <input id="Quantity" type="text" class="form-check-input2">
+                        <h5 class="RegOrder">UnitePrice:</h5> <input id="UnitPrice" type="text" class="form-check-input2">
+                        <div id="regholder" class="col-lg-6"><br><button id="ButtonAddProduct" class="btn btn-primary center-block" onclick=fillCart() >Add Product</button></div>
+                </div>
+                <br>
             <div class="headerPanel">
+                
                 <h3>Register Order</h3>
                 <!--   Register Order form ska finnas i denna div  -->
                 <h5 class="RegOrder" for="customer">Customers:</h5><input class="RegOrder" id="custom"></input>
@@ -96,14 +105,13 @@
                 <h5 class="RegOrder">Required Date</h5> <input id="RequiredDate" type="date">
                 <h5 class="RegOrder">ShipVia:</h5> <input id="ShipVia" type="text" class="form-check-input2">
                 <h5 class="RegOrder">Order ID:</h5> <input id="Orderid" type="text" class="form-check-input2">
-                <h5 class="RegOrder" for="ProductID">Products:</h5><input class="RegOrder" id="ProductID"></input>
-                <h5 class="RegOrder">Quantity:</h5> <input id="Quantity" type="text" class="form-check-input2">
-                <h5 class="RegOrder">UnitePrice:</h5> <input id="UnitPrice" type="text" class="form-check-input2">
                 <div id="regholder" class="col-lg-6"></div>
                     <br><button id="ButtonRegOrder" class="btn btn-primary center-block" onclick=newOrder()>New Order</button>
-                    <br><button id="ButtonRegOrder" class="btn btn-primary center-block" onclick=newOrderDetails()>Add Product</button>
+                    <button id="ButtonRegOrderDetails" class="btn btn-primary center-block" onclick=newOrderDetails()>Confirm</button>
+                    
                     <!-- <br><button id="ButtonRegOrder" class="btn btn-primary center-block" onclick=newOrder()>New Order</button> -->
             </div>
+
         </div>
     </div>
     <footer>
