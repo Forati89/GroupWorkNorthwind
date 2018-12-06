@@ -138,16 +138,16 @@ app.post('/neworderdetail', function (req, res) {
     var Orderid = req.body.Orderid
     var ProductID = req.body.ProductID
     var Quantity = req.body.Quantity
-    var UnitePrice = req.body.UnitePrice
-    insertOrderDetails(Orderid,ProductID,Quantity,UnitePrice)
+    var UnitPrice = req.body.UnitPrice
+    insertOrderDetails(Orderid,ProductID,Quantity,UnitPrice)
 
 })
-function insertOrderDetails(Orderid,ProductID,Quantity,UnitePrice)
+function insertOrderDetails(Orderid,ProductID,Quantity,UnitPrice)
 {  
-    var myQuery2 = `insert into [order details](Orderid,ProductID,Quantity,UnitePrice)values
+    var myQuery = `insert into [order details](Orderid,ProductID,Quantity,UnitPrice)values
 
-    ('${Orderid}','${ProductID}','${Quantity}','${UnitePrice}')`
-    sql.query(connString, myQuery2, (err, rows) => {
+    ('${Orderid}','${ProductID}','${Quantity}','${UnitPrice}')`
+    sql.query(connString, myQuery, (err, rows) => {
         if(err) console.log(err)
 
     })
