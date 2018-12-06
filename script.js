@@ -120,15 +120,15 @@ function newOrder(){
 };
 
 function newOrderDetails(){
-  var Orderid2=document.querySelector("#Orderid").value
+  var Orderid=document.querySelector("#Orderid").value
   var ProductID=document.querySelector("#ProductID").value
   var Quantity=document.querySelector("#Quantity").value
-  var UnitePrice=document.querySelector("#UnitPrice").value
+  var UnitPrice=document.querySelector("#UnitPrice").value
 
-  var obj2={Orderid2:Orderid2,ProductID:ProductID,Quantity:Quantity,UnitePrice: UnitePrice}
+  var obj={Orderid:Orderid,ProductID:ProductID,Quantity:Quantity,UnitPrice: UnitPrice}
 
-  console.log(obj2)
-  $.post("/neworderdetail",obj2,function(response){
+  console.log(obj)
+  $.post("/neworderdetail",obj,function(response){
     
   })    
 };
