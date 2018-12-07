@@ -133,3 +133,15 @@ function newOrderDetails(){
   })    
 };
 
+function flyttaVärde(){
+  var tr = document.querySelector("#pBody tr")
+  // console.log(tr.cells[0].innerHTML)
+  document.querySelector("#ProductID").value = tr.cells[0].innerHTML
+  document.querySelector("#UnitPrice").value = tr.cells[5].innerHTML
+}
+
+function flyttaVärde2(){
+  var tr2 = document.querySelector("#cBody tr")
+  document.querySelector("#custom").value = tr2.cells[0].innerHTML
+}
+
